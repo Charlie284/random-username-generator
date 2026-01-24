@@ -18,5 +18,3 @@ The generator randomly combines words from:
 - `verbs.txt`
 
 The wordlists are loaded at runtime using `fetch`, then combined using a few simple patterns to create readable usernames.
-
-## File structure
