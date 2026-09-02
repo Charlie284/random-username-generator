@@ -9,10 +9,11 @@ async function loadWordlist(path) {
   }
 
   const text = await res.text();
-  return text
+  const words = text
     .split("\n")
-    .map(w => w.trim().toLowerCase())
-    .filter(w => w && !w.startsWith("#"));
+    .map(word => word.trim().toLowerCase())
+    .filter(word => word && !word.startsWith("#"));
+  return [...new Set(words)];
 }
 
 async function loadAllWordlists() {
@@ -31,6 +32,9 @@ async function loadAllWordlists() {
 }
 
 function randomItem(arr) {
+  if (!arr.length) {
+    throw new Error("Cannot select from an empty word list");
+  }
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
